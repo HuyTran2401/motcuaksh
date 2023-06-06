@@ -1,0 +1,111 @@
+#list .list-header, #ctkyphieu .list-header{
+    font-style: italic;
+}
+#list .list-content, #ctkyphieu .list-content{
+    /* text-overflow: ellipsis; */
+    overflow: scroll;
+    text-align: right;
+}
+
+.radi_cham.chamkdat {
+  -webkit-appearance:none;
+  width:20px;
+  height:20px;
+  border:1px solid darkgray;
+  border-radius:50%;
+  outline:none;
+  box-shadow:0 0 5px 0px gray inset;
+}
+.radi_cham.chamkdat:hover {
+    box-shadow:0 0 5px 0px orange inset;
+}
+.radi_cham.chamkdat:before {
+    content:'';
+    display:block;
+    width:60%;
+    height:60%;
+    margin: 20% auto;
+    border-radius:50%;
+}
+.radi_cham.chamkdat:checked:before {
+    background:red;
+}
+
+.radi_cham.chamdat {
+  -webkit-appearance:none;
+  width:20px;
+  height:20px;
+  border:1px solid darkgray;
+  border-radius:50%;
+  outline:none;
+  box-shadow:0 0 5px 0px gray inset;
+}
+.radi_cham.chamdat:hover {
+    box-shadow:0 0 5px 0px orange inset;
+}
+.radi_cham.chamdat:before {
+    content:'';
+    display:block;
+    width:60%;
+    height:60%;
+    margin: 20% auto;
+    border-radius:50%;
+}
+.radi_cham.chamdat:checked:before {
+    background:green;
+}
+
+#slkdat{
+  color: red;
+  padding-top: -3px;
+  font-weight: 300;
+}
+#sldat{
+  color: green;
+  padding-top: -3px;
+  font-weight: 300;
+}
+
+.imgview{
+  display: inline;
+  float: left;
+  margin-right: 3px;
+}
+
+#ulimgctdguploaded{
+  max-height: 55px;
+  text-align: center;
+}
+
+.xemctkytruoc{
+  color: red;
+}
+
+.diemkdat{
+  color: red;
+}
+
+/* body {
+    font-family:verdana,helvetica,arial,sans-serif;
+    padding:20px;
+    font-size:12px;
+    margin:0;
+}
+h2 {
+    font-size:18px;
+    font-weight:bold;
+    margin:0;
+    margin-bottom:15px;
+}
+.demo-info{
+	padding:0 0 12px 0;
+}
+.demo-tip{
+	display:none;
+}
+.label-top{
+    display: block;
+    height: 22px;
+    line-height: 22px;
+    vertical-align: middle;
+} */
