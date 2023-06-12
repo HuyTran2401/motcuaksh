@@ -64,7 +64,7 @@
               return i;
             }        
             var today = new Date();
-            var time ='23:00:00'        
+            var time ='16:00:00'        
             var timethuc =  addZero(today.getHours()) + ":" + addZero(today.getMinutes()) + ":" + addZero(today.getSeconds());
              if(timethuc > time){
                window.location="go?page=_thongbao";

@@ -98,7 +98,7 @@
               type: 'POST',
               url: 'go',
               data: {
-                for: "rp_xemdanhsach_baocaodanhgia",
+                for: "rp_xemdanhsach_bcdanhgia_theonv",
                 tungay: datefmtomysql(tungay),
                 denngay: datefmtomysql(denngay),
                 madonvi: <?php echo $_SESSION["madonvi"]; ?>,

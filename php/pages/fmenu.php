@@ -19,7 +19,7 @@
 <div id="mm2" style="width:200px;">
     <a href="go?page=_rpbaocaodanhgia"  data-options="plain:true,iconCls:'icon-report'" class="easyui-linkbutton" style="display: <?php echo (($_SESSION['capquanly'] != '2' && $_SESSION['capquanly'] != '3') ? '' : 'none'); ?>">Báo cáo thống kê đánh giá</a>
     <a href="go?page=_rpbaocaodanhgia_tonghop" target="_blank" data-options="plain:true,iconCls:'icon-report'" class="easyui-linkbutton" style="display: <?php echo (($_SESSION['capquanly'] != '2' && $_SESSION['capquanly'] != '3' ) ? '' : 'none'); ?>">Báo cáo tổng hợp</a>
-    <a href="go?page=_ketqua" target="_blank" data-options="plain:true,iconCls:'icon-report'" class="easyui-linkbutton" style="display: <?php echo (($_SESSION['capquanly'] != '2' && $_SESSION['capquanly'] != '3' ) ? '' : 'none'); ?>">Báo cáo kết quả bắt số</a>
+    <a href="go?page=_kqbatso" target="_blank" data-options="plain:true,iconCls:'icon-report'" class="easyui-linkbutton" style="display: <?php echo (($_SESSION['capquanly'] != '2' && $_SESSION['capquanly'] != '3' ) ? '' : 'none'); ?>">Báo cáo kết quả bắt số</a>
 </div>
 <div id="mm3" style="width:160px;">
     <b><?php echo $_SESSION["tenhanvien"]; ?></b>

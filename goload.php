@@ -47,9 +47,9 @@ if(isset($_GET['check'])) {
   echo ob_get_clean();
 }
 
-//if(!isset($_SESSION["sansang"])){
-//  header("Location: go?check=_login");
-//}
+if(!isset($_SESSION["sansang"])){
+ header("Location: go?check=_login");
+}
 
 if(isset($_POST['for'])) {
   switch ($_POST['for']) {
@@ -215,13 +215,97 @@ if(isset($_POST['for'])) {
               echo json_encode($kq);
             }            
         break;
+         case "rp_xemdanhsach_batso":
+            if(isset($_POST["loaihinh"])){
+              $tungay = $_POST["tungay"];
+              $denngay = $_POST["denngay"];              
+              $loaihinh = $_POST["loaihinh"];
+              $ds = (new Ajbaocao())->xemdanhsach_baocaobatso($tungay,$denngay,$loaihinh);
+               $tongsoluong = 0;
+               foreach ($ds as $key) {
+                  $tongsoluong += doubleval($key['soluong']);
+              }
+              $footer = array(array("soluong"=>strval($tongsoluong)));
+              $rowspg = array_slice($ds, ((intval($_POST['page']) -1) * intval($_POST['rows'])), intval($_POST['rows']));
+              echo json_encode(array("total"=>count($ds), "rows"=>$rowspg, "footer"=>$footer));
+             // echo json_encode($kq);
+            } 
+        break;    
+        case "load_baocaodanhgia_TH":
+            if(isset($_POST["madonvi_ql"])){
+              $madonvi_ql = $_POST["madonvi_ql"];
+              $tungay = $_POST["tungay"];
+              $denngay = $_POST["denngay"];
+              $donvi = $_POST["donvi"];
+              $kq = (new Ajbaocao())->xemds_baocaodanhgia_TH($tungay,$denngay,$madonvi_ql,$donvi);
+              $kg_1 = 0;
+              $kg_2 = 0;
+              $kg_3 = 0;
+              $kg_4 = 0;
+              $kg_5 = 0;
+              $tongcong= 0;
+              foreach ($kq as $key) {
+                $kg_1 += doubleval($key['kg_1']);
+                $kg_2 += doubleval($key['kg_2']);
+                $kg_3 += doubleval($key['kg_3']);
+                $kg_4 += doubleval($key['kg_4']);
+                $kg_5 += doubleval($key['kg_5']);
+                $tongcong += doubleval($key['tongcong']);
+              }
+
+              $footer = array(array("kg_1"=>strval($kg_1)." lượt",
+                                    "kg_2"=>strval($kg_2)." lượt",
+                                    "kg_3"=>strval($kg_3)." lượt",
+                                    "kg_4"=>strval($kg_4)." lượt",
+                                    "kg_5"=>strval($kg_5)." lượt",
+                                    "tongcong"=>strval($tongcong)." lượt"
+                                  ));
+
+              $rowspg = array_slice($kq, ((intval($_POST['page']) -1) * intval($_POST['rows'])), intval($_POST['rows']));
+              echo json_encode(array("total"=>count($kq), "rows"=>$rowspg, "footer"=>$footer));
+        }                             
+        break;               
         case "rp_xemdanhsach_baocaodanhgia":
             if(isset($_POST["madonvi"])){
               $tungay = $_POST["tungay"];
               $denngay = $_POST["denngay"];              
               $madonvi = $_POST["madonvi"];
+              $donvi = $_POST["donvi"];
+              $kq = (new Ajbaocao())->xemdanhsach_baocaodanhgia($tungay,$denngay,$madonvi,$donvi);
+              $kg_1 = 0;
+              $kg_2 = 0;
+              $kg_3 = 0;
+              $kg_4 = 0;
+              $kg_5 = 0;
+              $tongcong= 0;
+              foreach ($kq as $key) {
+                $kg_1 += doubleval($key['kg_1']);
+                $kg_2 += doubleval($key['kg_2']);
+                $kg_3 += doubleval($key['kg_3']);
+                $kg_4 += doubleval($key['kg_4']);
+                $kg_5 += doubleval($key['kg_5']);
+                $tongcong += doubleval($key['tongcong']);
+              }
+
+              $footer = array(array("kg_1"=>strval($kg_1)." lượt",
+                                    "kg_2"=>strval($kg_2)." lượt",
+                                    "kg_3"=>strval($kg_3)." lượt",
+                                    "kg_4"=>strval($kg_4)." lượt",
+                                    "kg_5"=>strval($kg_5)." lượt",
+                                    "tongcong"=>strval($tongcong)." lượt"
+                                  ));
+
+              $rowspg = array_slice($kq, ((intval($_POST['page']) -1) * intval($_POST['rows'])), intval($_POST['rows']));
+              echo json_encode(array("total"=>count($kq), "rows"=>$rowspg, "footer"=>$footer));
+        }                             
+        break;           
+        case "rp_xemdanhsach_bcdanhgia_theonv":
+            if(isset($_POST["madonvi"])){
+              $tungay = $_POST["tungay"];
+              $denngay = $_POST["denngay"];              
+              $madonvi = $_POST["madonvi"];
               $nhanvien = $_POST["nhanvien"];
-              $kq = (new Ajbaocao())->xemdanhsach_baocaodanhgia($tungay,$denngay,$madonvi,$nhanvien);
+              $kq = (new Ajbaocao())->xemdanhsach_baocaodanhgia_theonv($tungay,$denngay,$madonvi,$nhanvien);
               echo json_encode($kq);
             }            
         break;
@@ -234,13 +318,13 @@ if(isset($_POST['for'])) {
 
 }
 if(isset($_GET['page'])) {
- /* if(!isset($_SESSION["sansang"])){
+ if(!isset($_SESSION["sansang"])){
     header("Location: go?check=_login");
   } else {
     if($_SESSION["sansang"] != "1"){
       header("Location: go?check=_login");
     }
-  }*/
+  }
   ob_start();
   switch ($_GET['page']) {
         case "_home":
@@ -284,6 +368,13 @@ if(isset($_GET['page'])) {
              $dsquaytheodv = (new AjDanhmuc())->dsquay_theodonvi($_SESSION['madonvi']); 
             include("php/pages/cookie_layykien.php");          
            break; 
+        case "_kqbatso":
+            include("php/pages/rp_baocaokqbatso.php");
+           break;  
+        case "_rpbaocaodanhgia":
+            $dsnhanvien = (new AjDanhmuc())->F_dsnhanvien($_SESSION['madonvi']);
+            include("php/pages/rpbaocaodanhgia.php");
+        break;     
         case "_inbaocao":
             $type = $_GET['type'];
             $var1 = $_GET['variable1'];
@@ -299,7 +390,11 @@ if(isset($_GET['page'])) {
             $pre_var3 = $_GET['param3'];
             $pre_var4 = $_GET['param4'];
             include("php/reports/viewer.php");
-            break;               
+            break;    
+        case "_rpbaocaodanhgia_tonghop":
+            $dsdonvi = (new AjDanhmuc())->Fload_donvi_canbo($_SESSION['madonvi']);
+            include("php/pages/rpbaocaodanhgia_tonghop.php");
+        break;               
         default:
            include("php/pages/ferror.php");           
   }

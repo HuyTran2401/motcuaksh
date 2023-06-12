@@ -50,8 +50,8 @@
             ?>
           </select>
           <a class="easyui-linkbutton" iconCls="icon-search" id="rp_xemdanhsach" name="rp_xemdanhsach">Xem Danh Sách</a>
-          <a id="btnInBC" href="javascript:void(0)" class="easyui-linkbutton easyui-tooltip" data-options="iconCls:'icon-print',disabled:false">In Báo Cáo</a>
-          <a id="btnInBCNV" href="javascript:void(0)" class="easyui-linkbutton easyui-tooltip" data-options="iconCls:'icon-print',disabled:false">In Báo Cáo Theo Đơn Vị</a>
+          <!-- <a id="btnInBC" href="javascript:void(0)" class="easyui-linkbutton easyui-tooltip" data-options="iconCls:'icon-print',disabled:false">In Báo Cáo</a>
+          <a id="btnInBCNV" href="javascript:void(0)" class="easyui-linkbutton easyui-tooltip" data-options="iconCls:'icon-print',disabled:false">In Báo Cáo Theo Đơn Vị</a> -->
           <div id="winInfo"></div>
         </div>
         <div data-options="region:'center'" style="padding:1px;">
@@ -133,26 +133,18 @@
           ]]
         });
         $("#rp_xemdanhsach").click(function(){
-          $('#rp_xemdanhsach').linkbutton('disable');
+          // $('#rp_xemdanhsach').linkbutton('disable');
           var tungay = $("#rp_tungay").datebox('getValue');
           var denngay = $("#rp_denngay").datebox('getValue');
-          var nhanvien =$("#rp_nhanvien").combobox('getValue');
-          $.ajax({
-              type: 'POST',
-              url: 'go',
-              data: {
-                for: "rp_xemdanhsach_baocaodanhgia",
-                tungay: datefmtomysql(tungay),
-                denngay: datefmtomysql(denngay),
-                madonvi: <?php echo $_SESSION["madonvi"]; ?>,
-                nhanvien: nhanvien
-              }
-          }).done(function(jsondata){
-            var j_data = JSON.parse(jsondata);
-            //console.log({'Total': eval(j_data).length, rows:j_data});
-            $('#dg_baocaochiphi').datagrid('loadData', {'Total': eval(j_data).length, rows:j_data});
-            $("#rp_xemdanhsach").linkbutton('enable');
-          });
+          var donvi =$("#rp_donvi").combobox('getValue');
+            $('#dg_baocaochiphi').datagrid('options').queryParams = {
+                      for:'rp_xemdanhsach_baocaodanhgia',                      
+                      tungay: datefmtomysql(tungay),
+                      denngay: datefmtomysql(denngay),
+                      madonvi: <?php echo $_SESSION["madonvi"]; ?>,
+                      donvi: donvi
+            };
+              $('#dg_baocaochiphi').datagrid('reload');
         });
         $("#btnInBC").click(function(){
           var name_baocao = "inbaocaoketquadanhgia";
@@ -182,7 +174,7 @@
           top:document.body.scrollTop+document.documentElement.scrollTop,
           bottom:''
         });
-        $('#winInfo').window('refresh', 'go?page=_inbaocao&type='+type+'&variable1='+madonvi+'&variable2='+ tungay +'&variable3='+ denngay + '&variable4='+manhanvien);
+        $('#winInfo').window('refresh', 'go?page=_inbaocao&type='+type+'&variable1='+madonvi+'&variable2='+ tungay +'&variable3='+ denngay + '&variable4='+donvi);
       }
       </script>
   </body>

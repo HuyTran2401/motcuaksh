@@ -36,7 +36,7 @@
                             <span style="font-size: 30px; padding: 0 0 0 70px;">CHUNG TAY CẢI CÁCH THỦ TỤC HÀNH CHÍNH</span>
                         </a>
                     </div>
-                    <div class="col-2" style="display: flex; align-items: center;">
+                    <div class="col-2" style="display: flex; align-items: center;" id="btn_quantri">
                             <img src="../motcuaksh/lib/img/logovnpt_edit.png" style="padding: 0 0 0 60px; width: auto; max-height: 55px;">
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                 });
             });
             $("#btn_quantri").click(function (evt) {
-                window.location.href = "go?page=_login";
+                window.location.href = "go?check=_ketqua";
             });
          });
         function getCookie(TT_HANHCHINH) {
