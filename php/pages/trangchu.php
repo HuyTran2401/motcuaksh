@@ -218,7 +218,7 @@
                 });
             });
             $("#btn_quantri").click(function (evt) {
-                window.location.href = "go?check=_ketqua";
+                window.location.href = "go?page=_baocao";
             });
          });
         function getCookie(TT_HANHCHINH) {

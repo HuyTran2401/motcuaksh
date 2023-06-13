@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en"> 
 <head>
-    <?php include '../motcuaksh/php/pages/header.php';?>      
-    <title>BỘ PHẬN MỘT CỬA UBND H.KẾ SÁCH</title>
+    <?php include '../motcuaksh/php/pages/header.php';?>  
 </head>
 
 <body>
@@ -32,7 +31,7 @@
     <script type="text/javascript">                 
         $(document).ready(function (){  
                loadthongtinquaytiepnhan();  
-               kiemtratime();
+              // kiemtratime();
                setInterval(function() {
                  kiemtratgiohanhchinh();  
               }, 10000);
@@ -64,7 +63,7 @@
               return i;
             }        
             var today = new Date();
-            var time ='16:00:00'        
+            var time ='22:00:00'        
             var timethuc =  addZero(today.getHours()) + ":" + addZero(today.getMinutes()) + ":" + addZero(today.getSeconds());
              if(timethuc > time){
                window.location="go?page=_thongbao";

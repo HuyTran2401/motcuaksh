@@ -24,10 +24,7 @@ if(isset($_GET['check'])) {
             break;            
         case "_dangnhap":
             include("php/pages/dangnhap.php");
-            break;
-        case "_ketqua":
-            include("php/pages/kq_batso.php");
-            break;
+            break;        
 	    case "_huongdan":
             include("php/pages/huongdansudung.php");	
              break;
@@ -47,9 +44,9 @@ if(isset($_GET['check'])) {
   echo ob_get_clean();
 }
 
-if(!isset($_SESSION["sansang"])){
- header("Location: go?check=_login");
-}
+// if(!isset($_SESSION["sansang"])){
+//  header("Location: go?check=_login");
+// }
 
 if(isset($_POST['for'])) {
   switch ($_POST['for']) {
@@ -368,7 +365,7 @@ if(isset($_GET['page'])) {
              $dsquaytheodv = (new AjDanhmuc())->dsquay_theodonvi($_SESSION['madonvi']); 
             include("php/pages/cookie_layykien.php");          
            break; 
-        case "_kqbatso":
+        case "_baocao":
             include("php/pages/rp_baocaokqbatso.php");
            break;  
         case "_rpbaocaodanhgia":

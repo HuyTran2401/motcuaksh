@@ -1,7 +1,7 @@
 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../motcuaksh/lib/img/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="../motcuaksh/lib/img/logo_1cua.png"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../motcuaksh/lib/css/bootstrap.css">
     <link rel="stylesheet" href="../motcuaksh/lib/css/bootstrap-grid.css">
@@ -32,3 +32,4 @@
     <script src="../motcuaksh/lib/assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../motcuaksh/lib/js/bootstrap.js"></script>
+  
